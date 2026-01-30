@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Birthday Surprise 🎁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #fff0f5;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .box {
+      max-width: 360px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      width: 90%;
+      margin-top: 10px;
+    }
+
+    button {
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #qrSection, #content {
+      display: none;
+      margin-top: 25px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    img.qr {
+      width: 200px;
+      margin: 15px auto;
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>🔐 Enter Password</h2>
+
+    <input type="password" id="pwd" placeholder="Password">
+    <button onclick="unlock()">Unlock 🎉</button>
+
+    <p id="error" class="error"></p>
+
+    <!-- ✅ QR appears AFTER password -->
+    <div id="qrSection">
+      <h3>📱 Scan the QR</h3>
+      <img src="qr.png" alt="QR Code" class="qr">
+    </div>
+
+    <!-- Optional extra content -->
+    <div id="content">
+      <h1>🎂 Happy Birthday! Boo🎉</h1>
+      <p>Surprise unlocked 💖</p>
+    </div>
+  </div>
+
+  <script>
+    function unlock() {
+      const correctPassword = "2510"; // 🔑 change this
+      const entered = document.getElementById("pwd").value;
+
+      if (entered === correctPassword) {
+        document.getElementById("qrSection").style.display = "block";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("error").innerText = "";
+      } else {
+        document.getElementById("error").innerText = "❌ Wrong password";
+      }
+    }
+  </script>
+
+</body>
+</html>
